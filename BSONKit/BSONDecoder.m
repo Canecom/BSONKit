@@ -9,18 +9,16 @@
 
 #import "BSONDecoder.h"
 
-
 // Uncomment the line below to get debug statements
 //#define PRINT_DEBUG
-// Debug macros
 #ifdef PRINT_DEBUG
-//#  define DLOG(fmt, ...) NSLog( (@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#  define DLOG(fmt, ...) NSLog( (@"" fmt), ##__VA_ARGS__);
+    #define DLog(fmt, ...) NSLog((@"%s [Line %d]: \n\t" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#  define DLOG(...)
+    #define DLog(...)
 #endif
+
 // ALog always displays output regardless of the DEBUG setting
-#define ALOG(fmt, ...) NSLog( (@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define ALog(fmt, ...) NSLog( (@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 
 // NSData category
@@ -104,7 +102,7 @@
 - (BOOL)decodeNextElementWithCompletionBlock:(void (^)(id eventName, id elementValue))block error:(NSError**)error {
     
     Byte elementType = *pByte;
-    DLOG(@"Decode element type 0x%x", elementType);
+    DLog(@"Decode element type 0x%x", elementType);
     
     // Move the current byte pointer forward
     pByte += sizeof(Byte);
@@ -160,7 +158,7 @@
             break;
         case 0x0A:
             // Nil (Null)
-            elementValue = [NSNull null];
+            elementValue = nil;
             break;
         case 0x0B:
             // Regular expression
@@ -219,7 +217,7 @@
     // Check the outcome of the decoding
     if (!*error && elementValue) {
         // No error reported and contains value
-        DLOG(@"Decoded element = %@:%@", elementName, elementValue);
+        DLog(@"Decoded element = %@:%@", elementName, elementValue);
         block(elementName, elementValue);
         return YES;
     } else if (!*error && !elementValue) {
@@ -331,7 +329,7 @@
     
     // The next byte tells us the type of the binary
     Byte binaryType = *pByte;
-    DLOG(@"Binary type 0x%x", binaryType);
+    DLog(@"Binary type 0x%x", binaryType);
     
     // Move the current byte pointer forward
     pByte += sizeof(Byte);
@@ -469,7 +467,7 @@
     NSString *formatString = [[[NSString alloc] initWithFormat:format arguments:varArgsList] autorelease];
     va_end(varArgsList);
     
-    ALOG(@"Parsing error with message: %@", formatString);
+    ALog(@"Parsing error with message: %@", formatString);
     
     // Create the error and store the state
     NSDictionary *errorInfo = [NSDictionary dictionaryWithObjectsAndKeys: 
@@ -480,6 +478,5 @@
 
 
 @end
-
 
 

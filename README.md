@@ -6,11 +6,11 @@ This is a modification of the original BSONKit created by Mattias Levin: https:/
 I made a lot of bug fixes and cleanups. This is tested on iOS, but should work on Os-X as well.
 
 It doesn't use ARC, but could be easily converted to use it.
- 
+
 ####Type conversion rules
 
 BSON types are converted into Objective-C types according to the table below:
- 
+
 <table border="1">
 <tr><th>BSON type</th><th>Objective-c type</th></tr>
 <tr><td>Document</td><td>NSDictionary</td></tr>
@@ -21,7 +21,7 @@ BSON types are converted into Objective-C types according to the table below:
 <tr><td>ObjectId</td><td>NSData</td></tr>
 <tr><td>Boolean</td><td>BOOL</td></tr>
 <tr><td>UTC datestamp</td><td>long long</td></tr>
-<tr><td>Null value</td><td>NSNill</td></tr>
+<tr><td>Null value</td><td>nil</td></tr>
 <tr><td>Regular expression</td><td>NSArray with two objects - regexp pattern (NSString) and options (NSString)</td></tr>
 <tr><td>Javascript code</td><td>NSString</td></tr>
 <tr><td>Symbol</td><td>NSString</td></tr>
@@ -32,7 +32,7 @@ BSON types are converted into Objective-C types according to the table below:
 <tr><td>Min key</td><td>TBD</td></tr>
 <tr><td>Max key</td><td>TBD</td></tr>
 </table>
- 
+
 ##Interface
 
 The interface for performing the decoding is very simple:
