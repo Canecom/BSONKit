@@ -8,7 +8,7 @@
 #
 Pod::Spec.new do |s|
   s.name         = "BSONKit"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "The BSONDecoder is an Objective-C framework for decoding binary JSON according to the BSON specification http://bsonspec.org"
   s.homepage     = "https://github.com/tib/BSONKit.git"
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
     "Adam Wallner"  => "wallner@bitbaro.hu",
     "Tibor Bödecs"  => "mail.tib@gmail.com"
   }
-  s.source       = { :git => "https://github.com/tib/BSONKit.git", :tag => "1.0.1"  }
+  s.source       = { :git => "https://github.com/tib/BSONKit.git", :tag => "1.0.2"  }
   s.platform     = :ios, '4.0'
   s.source_files = 'BSONKit', 'BSONKit/*.{h,m}'
 end
