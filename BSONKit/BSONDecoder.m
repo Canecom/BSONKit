@@ -60,15 +60,9 @@
 @implementation BSONDecoder
 
 
-// Release memory
-- (void)dealloc {
-    [super dealloc];
-}
-
-
 // Create a decoder
 + (BSONDecoder*)decoder {
-    return [[[BSONDecoder alloc] init] autorelease];
+    return [[BSONDecoder alloc] init];
 }
 
 
@@ -247,9 +241,9 @@
     int32_t length = [self decodeInt32WithError:error];
     
     // Read the string
-    NSString *string = [[[NSString alloc] initWithBytes:pByte
+    NSString *string = [[NSString alloc] initWithBytes:pByte
                                                  length:length - 1
-                                               encoding:NSUTF8StringEncoding] autorelease];
+                                               encoding:NSUTF8StringEncoding];
     
     // Move the current byte pointer forward
     pByte += length;
@@ -464,7 +458,7 @@
     // Create a formatted string from input parameters
     va_list varArgsList;
     va_start(varArgsList, format);
-    NSString *formatString = [[[NSString alloc] initWithFormat:format arguments:varArgsList] autorelease];
+    NSString *formatString = [[NSString alloc] initWithFormat:format arguments:varArgsList];
     va_end(varArgsList);
     
     ALog(@"Parsing error with message: %@", formatString);

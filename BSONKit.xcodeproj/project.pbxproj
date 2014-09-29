@@ -413,6 +413,7 @@
 		CDB4979A15875DEA00C2157F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BSONKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSONKit/BSONKit-Prefix.pch";
@@ -426,6 +427,7 @@
 		CDB4979B15875DEA00C2157F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/BSONKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSONKit/BSONKit-Prefix.pch";
@@ -460,6 +462,7 @@
 				23D1606516DCD5BC005AD495 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CDB4976F15875DEA00C2157F /* Build configuration list for PBXProject "BSONKit" */ = {
 			isa = XCConfigurationList;
